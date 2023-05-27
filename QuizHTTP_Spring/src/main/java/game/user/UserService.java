@@ -31,7 +31,7 @@ public class UserService {
 
     public ResponseEntity<AppUser> getUserByUsername(String userName) {
         return
-           ResponseEntity.ok(userRepository.findByUserName(userName).orElse(null));
+           ResponseEntity.ok(userRepository.findByUsername(userName).orElse(null));
     }
 
     public ResponseEntity<Void> updateUser(Long id, AppUser userDetails) {

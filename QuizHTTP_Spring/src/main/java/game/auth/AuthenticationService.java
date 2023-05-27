@@ -17,7 +17,7 @@ public class AuthenticationService {
     void register(String userName, String password) {
         AppUser newUser = new AppUser(userName, password);
 
-        if (userRepository.findByUserName(userName).isEmpty()) {
+        if (userRepository.findByUsername(userName).isEmpty()) {
             throw new IllegalArgumentException("User already exists!");
         }
 
@@ -25,7 +25,7 @@ public class AuthenticationService {
     }
 
     boolean authenticate(String userName, String password) {
-        var user = userRepository.findByUserName(userName).orElseThrow();
+        var user = userRepository.findByUsername(userName).orElseThrow();
 
         return user.isPasswordCorrect(password);
     }

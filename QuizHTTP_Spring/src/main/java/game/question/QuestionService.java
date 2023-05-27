@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class QuestionService {
-    // private final Client client = new Client("jservice.io", 80);
+    private final Client client = new Client("jservice.io", 80);
     private final QuestionRepository questionRepository;
 
     // todo: handle the Exception
@@ -23,11 +23,11 @@ public class QuestionService {
     public ResponseEntity<List<QuestionResponse>> getNewQuestions(Integer num) throws IOException {
         List<QuestionResponse> response = new ArrayList<>();
 
-        for (int i = 0; i < num; ++i) {
-//            var questionString = client.getQuestion("/api/random?count=" + num);
-//            var question = Deserializer.Deserialize(questionString, Question[].class)[0];
-//            var savedQuestion = questionRepository.save(question);
-//            response.add(new QuestionResponse(savedQuestion.getId(), savedQuestion.getQuestion()));
+        var questionString = client.getQuestion("/api/random?count=" + num);
+        var questions = Deserializer.Deserialize(questionString, Question[].class);
+        for (var question : questions) {
+            var savedQuestion = questionRepository.save(question);
+            response.add(new QuestionResponse(savedQuestion.getId(), savedQuestion.getQuestion()));
         }
 
         return ResponseEntity.ok(response);
