@@ -17,9 +17,9 @@ public class AuthenticationService {
     void register(String userName, String password) {
         AppUser newUser = new AppUser(userName, password);
 
-        if (userRepository.findByUsername(userName).isEmpty()) {
-            throw new IllegalArgumentException("User already exists!");
-        }
+//        if (userRepository.findByUsername(userName).isEmpty()) {
+//            throw new IllegalArgumentException("User already exists!");
+//        }
 
         userRepository.save(newUser);
     }

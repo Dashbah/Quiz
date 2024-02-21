@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@RestController("quiz/user")
+@RestController
+@RequestMapping("quiz/user")
 public class UserController {
     private final UserService userService;
 

@@ -61,4 +61,16 @@ public class UserService {
         userRepository.save(user);
         return ResponseEntity.ok().build();
     }
+
+    public boolean ifUserExists(Long userId) {
+        return userRepository.existsById(userId);
+    }
+
+    public void addRightAnswerToUserScore(Long userId) {
+        var user = userRepository.findById(userId).orElseThrow();
+        user.setNumOfRightQuestions(
+                user.getNumOfRightQuestions() + 1
+        );
+        userRepository.save(user);
+    }
 }

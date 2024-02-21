@@ -1,10 +1,8 @@
 package game.question;
 
-import com.google.gson.annotations.SerializedName;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 /**
  * Represents a single trivia question from the jservice.io API.

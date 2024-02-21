@@ -16,6 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class AppUser {
 
+    // @Column(name = "id")
     @Id
 //    @SequenceGenerator(
 //            name = "event_sequence",

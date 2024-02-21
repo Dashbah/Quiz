@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class QuestionService {
@@ -31,5 +32,13 @@ public class QuestionService {
         }
 
         return ResponseEntity.ok(response);
+    }
+
+    public boolean ifQuestionExists(Long questionId) {
+        return questionRepository.existsById(questionId);
+    }
+
+    public boolean checkAnswer(Long questionId, String answer) {
+        return Objects.equals(answer, questionRepository.findById(questionId).orElseThrow().getAnswer());
     }
 }
